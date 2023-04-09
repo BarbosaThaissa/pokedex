@@ -1,9 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 
 const Details = () => {
   return (
     <div>
-      <h1>page detalhes</h1>
+      <h1>Detalhes</h1>
     </div>
   );
 };

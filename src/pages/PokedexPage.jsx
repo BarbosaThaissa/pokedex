@@ -1,9 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 
 const PokedexPage = () => {
   return (
     <div>
-      <h1>Pokedex Page</h1>
+      <h1>Meus Pokémons</h1>
     </div>
   );
 };

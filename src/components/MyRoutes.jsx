@@ -9,13 +9,12 @@ import Details from "../pages/Details";
 const MyRoutes = () => {
   return (
     <div>
-      <h1>Rotas aqui</h1>
       <Router>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Pokedex" element={<PokedexPage />} />
-          <Route path="/detail/:id" element={<Details />} />
+          <Route path="/detail/:name" element={<Details />} />
         </Routes>
         <Footer />
       </Router>
