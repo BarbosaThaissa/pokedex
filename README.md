@@ -62,3 +62,6 @@ Os conteúdos principais a serem estudados são:
 3.  Tire print das páginas do seu projeto e cole no readme;
 4.  Abra um novo Pull Request (PR) com a frase **PR para correção**. Caso não saiba como fazê-lo, assista a esse [vídeo](https://www.canva.com/design/DAFY4nS5W2c/t92uFMR61YtmA7bCwj2S1Q/watch).
 5.  Envie o link do seu PR e do surge no [formulário de entrega](https://docs.google.com/forms/d/e/1FAIpQLSfGGRaglpzWpdREBBfq3eUCMXkRXuiS61Zfyy0L_Ce0uNIXTA/viewform).
+
+
+Tá com bug será?
