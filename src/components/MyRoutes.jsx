@@ -16,7 +16,6 @@ const MyRoutes = () => {
           <Route path="/pokedex" element={<PokedexPage />} />
           <Route path="/detail/:name" element={<Details />} />
         </Routes>
-        <a href="/detail/nome-aqui">Detalhes</a>
         <Footer />
       </Router>
     </div>

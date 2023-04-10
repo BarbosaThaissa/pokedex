@@ -42,6 +42,11 @@ const Container = styled.header`
   align-items: center;
   justify-content: space-around;
   padding: 1.3rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
 
   & > img {
     width: 250px;
