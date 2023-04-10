@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { FaInstagramSquare, FaLinkedin, FaGithub } from "react-icons/fa";
-import LogoFooter from '../assets/poke-icon.svg'
 
 const Footer = () => {
   return (
