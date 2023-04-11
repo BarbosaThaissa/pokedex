@@ -29,7 +29,7 @@ const Header = () => {
             window.location.pathname === "/pokedex" ? "display-header" : ""
           }
         >
-          Excluir da Pokédex
+          Excluir
         </ButtonEx>
       )}
     </Container>
@@ -51,6 +51,14 @@ const Container = styled.header`
   & > img {
     width: 250px;
     margin-left: -10px;
+
+    @media (max-width: 850px) {
+      width: 200px;
+    }
+
+    @media (max-width: 580px) {
+      width: 80px;
+    }
   }
 `;
 
@@ -65,6 +73,14 @@ const A = styled.a`
     transition: all 0.3s ease;
     background-color: #c7f9cc;
     border-radius: 8px;
+  }
+
+  @media (max-width: 880px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 580px) {
+    font-size: 0.7rem;
   }
 `;
 
@@ -82,6 +98,16 @@ const Button = styled.button`
   &:hover {
     background-color: #4cc9f0;
   }
+
+  @media (max-width: 850px) {
+    font-size: 1rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  @media (max-width: 580px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const ButtonEx = styled(Button)`
@@ -90,6 +116,11 @@ const ButtonEx = styled(Button)`
 
   &:hover {
     background-color: #df2935;
+  }
+
+  @media (max-width: 850px) {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
   }
 `;
 export default Header;

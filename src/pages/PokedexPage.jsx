@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-
 const PokedexPage = () => {
   return (
     <Container>
@@ -23,6 +22,11 @@ const Container = styled.main`
   & > h1 {
     font-size: 2.5rem;
     font-weight: bold;
+
+    @media (max-width: 500px) {
+      font-size: 2rem;
+      margin-top: -40px;
+    }
   }
 `;
 
