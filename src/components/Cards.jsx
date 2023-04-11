@@ -1,5 +1,18 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+//imgs
+import Pokeball from "../assets/pokeball.svg";
+import Bug from "../assets/bug.png";
+import Dragon from "../assets/dragon.png";
+import Fire from "../assets/fire.png";
+import Grass from "../assets/grass.png";
+import Ice from "../assets/ice.svg";
+import Normal from "../assets/normal.svg";
+import Psch from "../assets/psychi.svg";
+import Water from "../assets/water.svg";
+import Rock from "../assets/rock.svg";
+import Eletr from "../assets/electric.svg";
+import Flying  from "../assets/flying.png";
 
 const URLBase = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -21,7 +34,7 @@ const Cards = (props) => {
   }, []);
 
   return (
-    <div>
+    <>
       {pokemonDet.map((pokemonD) => (
         <Container key={pokemonD.id}>
           <Wrap>
@@ -30,7 +43,37 @@ const Cards = (props) => {
               <h2>{pokemonD.name}</h2>
               <SpanDiv>
                 {pokemonD.types.map((typeA, index) => (
-                  <span key={index}>emo {typeA.type.name}</span>
+                  <>
+                    <div>
+                      <img
+                        src={
+                          typeA.type.name === "bug"
+                            ? Bug
+                            : typeA.type.name === "fire"
+                            ? Fire
+                            : typeA.type.name === "rock"
+                            ? Rock
+                            : typeA.type.name === "normal"
+                            ? Normal
+                            : typeA.type.name === "grass"
+                            ? Grass
+                            : typeA.type.name === "dragon"
+                            ? Dragon
+                            : typeA.type.name === "ice"
+                            ? Ice
+                            : typeA.type.name === "psychic"
+                            ? Psch
+                            : typeA.type.name === "electric"
+                            ? Eletr
+                            : typeA.type.name === "flying"
+                            ? Flying
+                            : Water
+                        }
+                        alt="icon"
+                      />
+                    </div>
+                    <Span key={index}>{typeA.type.name}</Span>
+                  </>
                 ))}
               </SpanDiv>
             </CardText>
@@ -43,24 +86,33 @@ const Cards = (props) => {
           </Wrap>
           <Buttons>
             <a href={`/detail/${pokemonD.name}`}>Detales</a>
-            <button>Captura!</button>
+            <button>Capturar!</button>
           </Buttons>
         </Container>
       ))}
-    </div>
+    </>
   );
 };
 
 const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
+  background: url(${Pokeball});
+  background-color: #8cb369;
+  background-repeat: no-repeat;
+  background-position: right;
   width: 389px;
-  border: 1px solid blue;
+  border: none;
   padding: 0.8rem;
   border-radius: 10px;
   min-height: 180px;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 880px) {
+    width: 335px;
+  }
 `;
 const Wrap = styled.div`
   display: flex;
@@ -105,32 +157,72 @@ const CardText = styled.div`
   width: 70%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  background-color: lightgreen;
 
   & > h2::first-letter {
     text-transform: uppercase;
+  }
+
+  & > p {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: -5px;
   }
 `;
 
 const SpanDiv = styled.div`
   display: flex;
   width: 100%;
-  gap: 8px;
+  margin-top: 8px;
 
-  & > span {
-    background-color: orange;
-    border-radius: 8px;
-    padding: 3px 7px;
+  & > div {
+    display: flex;
+    align-items: center;
+    background-color: #ff6675;
+    border-top: 1px dashed white;
+    border-left: 1px dashed white;
+    border-bottom: 1px dashed white;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin-left: 8px;
+
+    & > img {
+      height: 15px;
+    }
+  }
+`;
+
+const Span = styled.span`
+  background-color: #ff6675;
+  //border-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 3px 7px;
+  border-top: 1px dashed white;
+  border-right: 1px dashed white;
+  border-bottom: 1px dashed white;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+
+  &::first-letter {
+    text-transform: uppercase;
   }
 `;
 
 const CardImg = styled.div`
-  width: 30%;
-  background-color: purple;
+  width: 35%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 
   & > img {
-    width: 100%;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    right: 0;
+    top: -95px;
   }
 `;
 

@@ -54,7 +54,8 @@ const FooterStelyd = styled.footer`
   @media (max-width: 480px) {
     flex-direction: column;
     & > p {
-      display: none;
+      //display: none;
+      font-size: 13px;
     }
   }
 `;
