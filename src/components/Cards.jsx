@@ -12,7 +12,7 @@ import Psch from "../assets/psychi.svg";
 import Water from "../assets/water.svg";
 import Rock from "../assets/rock.svg";
 import Eletr from "../assets/electric.svg";
-import Flying  from "../assets/flying.png";
+import Flying from "../assets/flying.png";
 
 const URLBase = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -36,7 +36,7 @@ const Cards = (props) => {
   return (
     <>
       {pokemonDet.map((pokemonD) => (
-        <Container key={pokemonD.id}>
+        <Container key={pokemonD.id} bg={pokemonD.name}>
           <Wrap>
             <CardText>
               <p>#{pokemonD.id}</p>
@@ -44,7 +44,7 @@ const Cards = (props) => {
               <SpanDiv>
                 {pokemonD.types.map((typeA, index) => (
                   <>
-                    <div>
+                    <Icon back={typeA.type.name}>
                       <img
                         src={
                           typeA.type.name === "bug"
@@ -71,8 +71,10 @@ const Cards = (props) => {
                         }
                         alt="icon"
                       />
-                    </div>
-                    <Span key={index}>{typeA.type.name}</Span>
+                    </Icon>
+                    <Span key={index} back={typeA.type.name}>
+                      {typeA.type.name}
+                    </Span>
                   </>
                 ))}
               </SpanDiv>
@@ -100,7 +102,36 @@ const Container = styled.div`
   justify-content: space-between;
   flex-direction: column;
   background: url(${Pokeball});
-  background-color: #8cb369;
+  background-color: ${({ bg }) =>
+    bg === "pinsir"
+      ? "#8cb369"
+      : bg === "magmar" || bg === "flareon" || bg === "moltres"
+      ? "#f4a259"
+      : bg === "aerodactyl" ||
+        bg === "kabutops" ||
+        bg === "omanyte" ||
+        bg === "omastar" ||
+        bg === "kabuto"
+      ? "#d4a373"
+      : bg === "ditto" ||
+        bg === "tauros" ||
+        bg === "eevee" ||
+        bg === "porygon" ||
+        bg === "snorlax"
+      ? "#d4a373"
+      : bg === "vaporeon" ||
+        bg === "lapras" ||
+        bg === "gyarados" ||
+        bg === "magikarp" ||
+        bg === "articuno"
+      ? "#7fc8f8"
+      : bg === "dragonite" || bg === "dragonair" || bg === "dratini"
+      ? "#77a6b6"
+      : bg === "mew" || bg === "mewtwo"
+      ? "#ea9ab2"
+      : bg === "jolteon" || bg === "zapdos"
+      ? "#f4d35e"
+      : "#619b8a"};
   background-repeat: no-repeat;
   background-position: right;
   width: 389px;
@@ -138,6 +169,7 @@ const Buttons = styled.div`
 
     &:hover {
       cursor: pointer;
+      background-color: #999;
     }
   }
 
@@ -173,26 +205,68 @@ const SpanDiv = styled.div`
   display: flex;
   width: 100%;
   margin-top: 8px;
+`;
 
-  & > div {
-    display: flex;
-    align-items: center;
-    background-color: #ff6675;
-    border-top: 1px dashed white;
-    border-left: 1px dashed white;
-    border-bottom: 1px dashed white;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    margin-left: 8px;
+const Icon = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: ${({ back }) =>
+    back === "bug"
+      ? "#386641"
+      : back === "fire"
+      ? "#fb6107"
+      : back === "rock"
+      ? "#C8B686"
+      : back === "normal"
+      ? "#9FA19F"
+      : back === "water"
+      ? "#3692DC"
+      : back === "ice"
+      ? "#4CD1C0"
+      : back === "dragon"
+      ? "#2364aa"
+      : back === "psychic"
+      ? "#FF6675"
+      : back === "electric"
+      ? "#FBD100"
+      : back === "flying"
+      ? "#6290c3"
+      : "#a1c181"};
+  border-top: 1px dashed white;
+  border-left: 1px dashed white;
+  border-bottom: 1px dashed white;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  margin-left: 8px;
 
-    & > img {
-      height: 15px;
-    }
+  & > img {
+    height: 15px;
   }
 `;
 
 const Span = styled.span`
-  background-color: #ff6675;
+  background-color: ${({ back }) =>
+    back === "bug"
+      ? "#386641"
+      : back === "fire"
+      ? "#fb6107"
+      : back === "rock"
+      ? "#C8B686"
+      : back === "normal"
+      ? "#9FA19F"
+      : back === "water"
+      ? "#3692DC"
+      : back === "ice"
+      ? "#4CD1C0"
+      : back === "dragon"
+      ? "#2364aa"
+      : back === "psychic"
+      ? "#FF6675"
+      : back === "electric"
+      ? "#FBD100"
+      : back === "flying"
+      ? "#6290c3"
+      : "#a1c181"};
   //border-radius: 8px;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
