@@ -1,23 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
+import { FunctionsContext } from "../context/FunctionsContext";
+
 //imgs
 import Pokeball from "../assets/pokeball.svg";
-import Bug from "../assets/bug.png";
-import Dragon from "../assets/dragon.png";
-import Fire from "../assets/fire.png";
-import Grass from "../assets/grass.png";
+import BugSvg from "../assets/bug.svg";
+import Dragon from "../assets/dragon.svg";
+import Fire from "../assets/fire.svg";
+import Grass from "../assets/grass.svg";
 import Ice from "../assets/ice.svg";
 import Normal from "../assets/normal.svg";
 import Psch from "../assets/psychi.svg";
 import Water from "../assets/water.svg";
 import Rock from "../assets/rock.svg";
 import Eletr from "../assets/electric.svg";
-import Flying from "../assets/flying.png";
+import Flying from "../assets/flying.svg";
 
 const URLBase = "https://pokeapi.co/api/v2/pokemon/";
 
 const Cards = (props) => {
   const [pokemonDet, setPokemonDet] = useState([]);
+
+  const { cardPokemon, addPokedex, removePokedex } =
+    useContext(FunctionsContext);
 
   const { pokemon } = props;
 
@@ -48,7 +53,7 @@ const Cards = (props) => {
                       <img
                         src={
                           typeA.type.name === "bug"
-                            ? Bug
+                            ? BugSvg
                             : typeA.type.name === "fire"
                             ? Fire
                             : typeA.type.name === "rock"
@@ -104,9 +109,9 @@ const Container = styled.div`
   background: url(${Pokeball});
   background-color: ${({ bg }) =>
     bg === "pinsir"
-      ? "#8cb369"
+      ? "#76A866"
       : bg === "magmar" || bg === "flareon" || bg === "moltres"
-      ? "#f4a259"
+      ? "#EAAB7D"
       : bg === "aerodactyl" ||
         bg === "kabutops" ||
         bg === "omanyte" ||
@@ -118,20 +123,20 @@ const Container = styled.div`
         bg === "eevee" ||
         bg === "porygon" ||
         bg === "snorlax"
-      ? "#d4a373"
+      ? "#BF9762"
       : bg === "vaporeon" ||
         bg === "lapras" ||
         bg === "gyarados" ||
         bg === "magikarp" ||
         bg === "articuno"
-      ? "#7fc8f8"
+      ? "#71C3FF"
       : bg === "dragonite" || bg === "dragonair" || bg === "dratini"
       ? "#77a6b6"
       : bg === "mew" || bg === "mewtwo"
       ? "#ea9ab2"
       : bg === "jolteon" || bg === "zapdos"
-      ? "#f4d35e"
-      : "#619b8a"};
+      ? "#eec170"
+      : "#729F92"};
   background-repeat: no-repeat;
   background-position: right;
   width: 389px;
@@ -210,34 +215,34 @@ const SpanDiv = styled.div`
 const Icon = styled.div`
   display: flex;
   align-items: center;
+  padding-left: 5px;
   background-color: ${({ back }) =>
     back === "bug"
-      ? "#386641"
+      ? "#316520"
       : back === "fire"
-      ? "#fb6107"
+      ? "#F44900"
       : back === "rock"
       ? "#C8B686"
       : back === "normal"
-      ? "#9FA19F"
+      ? "#8A8A8A"
       : back === "water"
-      ? "#3692DC"
+      ? "#33A4F5"
       : back === "ice"
-      ? "#4CD1C0"
+      ? "#74CEC0"
       : back === "dragon"
-      ? "#2364aa"
+      ? "#0A6CBF"
       : back === "psychic"
-      ? "#FF6675"
+      ? "#F67176"
       : back === "electric"
-      ? "#FBD100"
+      ? "#F4D23B"
       : back === "flying"
       ? "#6290c3"
-      : "#a1c181"};
+      : "#70B873"};
   border-top: 1px dashed white;
   border-left: 1px dashed white;
   border-bottom: 1px dashed white;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  margin-left: 8px;
 
   & > img {
     height: 15px;
@@ -247,26 +252,26 @@ const Icon = styled.div`
 const Span = styled.span`
   background-color: ${({ back }) =>
     back === "bug"
-      ? "#386641"
+      ? "#316520"
       : back === "fire"
-      ? "#fb6107"
+      ? "#F44900"
       : back === "rock"
       ? "#C8B686"
       : back === "normal"
-      ? "#9FA19F"
+      ? "#8A8A8A"
       : back === "water"
-      ? "#3692DC"
+      ? "#33A4F5"
       : back === "ice"
-      ? "#4CD1C0"
+      ? "#74CEC0"
       : back === "dragon"
-      ? "#2364aa"
+      ? "#0A6CBF"
       : back === "psychic"
-      ? "#FF6675"
+      ? "#F67176"
       : back === "electric"
-      ? "#FBD100"
+      ? "#F4D23B"
       : back === "flying"
       ? "#6290c3"
-      : "#a1c181"};
+      : "#70B873"};
   //border-radius: 8px;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -277,10 +282,8 @@ const Span = styled.span`
   font-size: 13px;
   display: flex;
   align-items: center;
-
-  &::first-letter {
-    text-transform: uppercase;
-  }
+  text-transform: capitalize;
+  margin-right: 8px;
 `;
 
 const CardImg = styled.div`
@@ -292,11 +295,11 @@ const CardImg = styled.div`
   position: relative;
 
   & > img {
-    width: 150px;
+    width: 170px;
     height: 150px;
     position: absolute;
     right: 0;
-    top: -95px;
+    top: -83px;
   }
 `;
 
