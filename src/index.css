@@ -20,3 +20,7 @@ h1 {
 .display-header {
   display: none;
 }
+
+.test {
+  text-transform: capitalize;
+}

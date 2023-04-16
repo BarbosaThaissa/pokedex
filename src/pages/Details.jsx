@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 
+import { FunctionsContext } from "../context/FunctionsContext";
 
 const Details = () => {
+  const { setCardPokemon, addPokedex, removePokedex } =
+    useContext(FunctionsContext);
+
   return (
     <Container>
       <h1>Detalhes</h1>
