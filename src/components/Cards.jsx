@@ -93,13 +93,33 @@ const Cards = (props) => {
           </Wrap>
           <Buttons>
             <a href={`/detail/${pokemonD.name}`}>Detales</a>
-            <button>Capturar!</button>
+            {cardPokemon.find((nameP) => nameP.name === pokemonD.name) ? (
+              <BtnEx onClick={() => removePokedex(pokemonD)}>Excluir</BtnEx>
+            ) : (
+              <button onClick={() => addPokedex(pokemonD)}>Capturar!</button>
+            )}
           </Buttons>
         </Container>
       ))}
     </>
   );
 };
+
+const BtnEx = styled.button`
+  background-color: #f94144;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 2rem;
+  border-radius: 8px;
+  font-family: Verdana;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #df2935;
+    cursor: pointer;
+  }
+`;
 
 const Container = styled.div`
   display: flex;

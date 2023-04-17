@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
 import { FunctionsContext } from "../context/FunctionsContext";
 import Cards from "../components/Cards";
 
 const PokedexPage = () => {
-  const { cardPokemon, setCardPokemon, addPokedex, removePokedex } =
-    useContext(FunctionsContext);
+  const { cardPokemon } = useContext(FunctionsContext);
 
   return (
     <Container>
@@ -18,9 +17,11 @@ const PokedexPage = () => {
           <h2>Adicione um Pokemon aqui.</h2>
         </Text>
       ) : (
-        cardPokemon.map((pokemon, index) => (
-          <Cards key={index} pokemon={pokemon} />
-        ))
+        <StelydCard>
+          {cardPokemon.map((pokemon, index) => (
+            <Cards key={index} pokemon={pokemon} />
+          ))}
+        </StelydCard>
       )}
     </Container>
   );
@@ -71,6 +72,20 @@ const Text = styled.div`
     & > h2 {
       font-size: 1.5rem;
     }
+  }
+`;
+
+const StelydCard = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  min-height: 58.2vh;
+
+  @media (max-width: 850px) {
+    min-height: auto;
   }
 `;
 
