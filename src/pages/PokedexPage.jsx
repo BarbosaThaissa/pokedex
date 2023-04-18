@@ -18,8 +18,8 @@ const PokedexPage = () => {
         </Text>
       ) : (
         <StelydCard>
-          {cardPokemon.map((pokemon, index) => (
-            <Cards key={index} pokemon={pokemon} />
+          {cardPokemon.map((pokemon) => (
+            <Cards key={pokemon.name} pokemon={pokemon} />
           ))}
         </StelydCard>
       )}
