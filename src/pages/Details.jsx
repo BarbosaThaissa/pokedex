@@ -4,9 +4,11 @@ import styled from "styled-components";
 import { FunctionsContext } from "../context/FunctionsContext";
 
 const Details = () => {
-  const { setCardPokemon, addPokedex, removePokedex } =
-    useContext(FunctionsContext);
+  const { cardPokemon, setTemPokedex, setNamePokemx } = useContext(FunctionsContext);
 
+  const includesPokedex = (namePoke) => {
+    let test = "fazer a funcao aqui";
+  };
   return (
     <Container>
       <h1>Detalhes</h1>

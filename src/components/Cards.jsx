@@ -151,7 +151,7 @@ const Container = styled.div`
         bg === "articuno"
       ? "#71C3FF"
       : bg === "dragonite" || bg === "dragonair" || bg === "dratini"
-      ? "#77a6b6"
+      ? "#004170"
       : bg === "mew" || bg === "mewtwo"
       ? "#ea9ab2"
       : bg === "jolteon" || bg === "zapdos"

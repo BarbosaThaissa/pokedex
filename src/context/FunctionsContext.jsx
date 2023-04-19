@@ -6,6 +6,8 @@ const FunctionsProvider = ({ children }) => {
   const [cardPokemon, setCardPokemon] = useState([]);
   const [popUpVisivel, setPopUpVisivel] = useState(false);
   const [popAdd, setPopAdd] = useState(true);
+  const [temPokedex, setTemPokedex] = useState(false);
+  const [namePokem, setNamePokemx] = useState("");
 
   const addPokedex = (pokemon) => {
     abrirPopUp();
@@ -54,6 +56,10 @@ const FunctionsProvider = ({ children }) => {
         popAdd,
         popUpVisivel,
         fecharPopUp,
+        temPokedex,
+        setTemPokedex,
+        namePokem,
+        setNamePokemx,
       }}
     >
       {children}
