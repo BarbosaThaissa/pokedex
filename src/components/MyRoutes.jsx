@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import PopUp from "./PopUp";
 import Home from "../pages/Home";
 import PokedexPage from "../pages/PokedexPage";
 import Details from "../pages/Details";
@@ -16,6 +17,7 @@ const MyRoutes = () => {
           <Route path="/pokedex" element={<PokedexPage />} />
           <Route path="/detail/:name" element={<Details />} />
         </Routes>
+        <PopUp />
         <Footer />
       </Router>
     </div>

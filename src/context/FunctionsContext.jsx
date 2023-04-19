@@ -4,15 +4,29 @@ export const FunctionsContext = createContext();
 
 const FunctionsProvider = ({ children }) => {
   const [cardPokemon, setCardPokemon] = useState([]);
+  const [popUpVisivel, setPopUpVisivel] = useState(false);
+  const [popAdd, setPopAdd] = useState(true);
 
   const addPokedex = (pokemon) => {
+    abrirPopUp();
     setCardPokemon([...cardPokemon, pokemon]);
+    setPopAdd(true);
   };
 
   const removePokedex = (pokemon) => {
     const newList = cardPokemon.filter((nameP) => nameP.name !== pokemon.name);
 
+    abrirPopUp();
     setCardPokemon(newList);
+    setPopAdd(false);
+  };
+
+  const abrirPopUp = () => {
+    setPopUpVisivel(true);
+  };
+
+  const fecharPopUp = () => {
+    setPopUpVisivel(false);
   };
 
   // carregar itens no localStorage quando o componente for montado
@@ -37,6 +51,9 @@ const FunctionsProvider = ({ children }) => {
         setCardPokemon,
         addPokedex,
         removePokedex,
+        popAdd,
+        popUpVisivel,
+        fecharPopUp,
       }}
     >
       {children}
