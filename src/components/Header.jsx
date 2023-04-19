@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Logo from "../assets/pngwing.com.png";
+import Seta from "../assets/setaH.svg"
+import { FunctionsContext } from "../context/FunctionsContext";
 
 const Header = () => {
+  const { addPokedex, removePokedex, temPokedex, namePokem } =
+    useContext(FunctionsContext);
+
   return (
     <Container>
       <A
@@ -23,14 +28,24 @@ const Header = () => {
             Pokedéx
           </Button>
         </a>
-      ) : (
+      ) : temPokedex ? (
         <ButtonEx
+          onClick={() => removePokedex(namePokem)}
           className={
             window.location.pathname === "/pokedex" ? "display-header" : ""
           }
         >
           Excluir
         </ButtonEx>
+      ) : (
+        <ButtonAdd
+          onClick={() => addPokedex(namePokem)}
+          className={
+            window.location.pathname === "/pokedex" ? "display-header" : ""
+          }
+        >
+          Capturar!
+        </ButtonAdd>
       )}
     </Container>
   );
@@ -123,4 +138,13 @@ const ButtonEx = styled(Button)`
     padding-left: 1.5rem;
   }
 `;
+
+const ButtonAdd = styled(ButtonEx)`
+  background-color: #70e000;
+
+  &:hover {
+    background-color: #a7c957;
+  }
+`;
+
 export default Header;

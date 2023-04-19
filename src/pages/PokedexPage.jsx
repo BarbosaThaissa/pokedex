@@ -5,7 +5,7 @@ import { FunctionsContext } from "../context/FunctionsContext";
 import Cards from "../components/Cards";
 
 const PokedexPage = () => {
-  const { cardPokemon } = useContext(FunctionsContext);
+  const { cardPokemon, popUpVisivel } = useContext(FunctionsContext);
 
   return (
     <Container>
@@ -17,7 +17,7 @@ const PokedexPage = () => {
           <h2>Adicione um Pokemon aqui.</h2>
         </Text>
       ) : (
-        <StelydCard>
+        <StelydCard popUpVisivel={popUpVisivel}>
           {cardPokemon.map((pokemon) => (
             <Cards key={pokemon.name} pokemon={pokemon} />
           ))}
@@ -76,7 +76,7 @@ const Text = styled.div`
 `;
 
 const StelydCard = styled.div`
-  display: flex;
+  display: ${({ popUpVisivel }) => (popUpVisivel ? "none" : "flex")};
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;

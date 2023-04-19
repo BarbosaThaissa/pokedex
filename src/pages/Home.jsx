@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import Cards from "../components/Cards";
+import { FunctionsContext } from "../context/FunctionsContext";
 
 const URLBase = "https://pokeapi.co/api/v2/pokemon/?offset=125&limit=27";
 
 const Home = () => {
   const [pokemonsSt, setPokemonsSt] = useState([]);
-
+  const { popUpVisivel } = useContext(FunctionsContext);
   const getPokemons = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
@@ -21,7 +22,7 @@ const Home = () => {
   return (
     <Container>
       <h1>Todos os Pokémons</h1>
-      <StelydCard>
+      <StelydCard popUpVisivel={popUpVisivel}>
         {pokemonsSt.map((pokemonNt) =>
           pokemonNt.map((pokemon, index) => (
             <Cards key={index} pokemon={pokemon} />
@@ -54,7 +55,7 @@ const Container = styled.main`
 `;
 
 const StelydCard = styled.div`
-  display: flex;
+  display: ${({ popUpVisivel }) => (popUpVisivel ? "none" : "flex")};
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
