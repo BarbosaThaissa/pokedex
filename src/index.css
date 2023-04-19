@@ -24,3 +24,11 @@ h1 {
 .test {
   text-transform: capitalize;
 }
+
+.relative {
+  position: relative;
+}
+
+.hidden {
+  overflow: hidden;
+}
