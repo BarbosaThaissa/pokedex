@@ -4,11 +4,14 @@ import App from "./App";
 import "./index.css";
 
 import FunctionsProvider from "./context/FunctionsContext";
+import LoadingProvider from "./context/LoadingContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <FunctionsProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <LoadingProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </LoadingProvider>
   </FunctionsProvider>
 );
