@@ -159,6 +159,7 @@ const Container = styled.div`
       : "#729F92"};
   background-repeat: no-repeat;
   background-position: right;
+  background-position-y: -25px;
   width: 389px;
   border: none;
   padding: 0.8rem;
@@ -170,6 +171,7 @@ const Container = styled.div`
     width: 335px;
   }
 `;
+
 const Wrap = styled.div`
   display: flex;
   width: 100%;

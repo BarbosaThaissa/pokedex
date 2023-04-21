@@ -1,33 +1,43 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
+//components
 import Cards from "../components/Cards";
+import Loading from "../components/Loading";
+//contexts
 import { FunctionsContext } from "../context/FunctionsContext";
+import { LoadingContext } from "../context/LoadingContext";
 
 const URLBase = "https://pokeapi.co/api/v2/pokemon/?offset=125&limit=27";
 
 const Home = () => {
   const [pokemonsSt, setPokemonsSt] = useState([]);
   const { popUpVisivel } = useContext(FunctionsContext);
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
+
   const getPokemons = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
 
+    setIsLoading(false);
     setPokemonsSt([data.results]);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getPokemons(URLBase);
   }, []);
 
   return (
     <Container>
       <h1>Todos os Pokémons</h1>
+      {isLoading && <Loading />}
       <StelydCard popUpVisivel={popUpVisivel}>
-        {pokemonsSt.map((pokemonNt) =>
-          pokemonNt.map((pokemon, index) => (
-            <Cards key={index} pokemon={pokemon} />
-          ))
-        )}
+        {!isLoading &&
+          pokemonsSt.map((pokemonNt) =>
+            pokemonNt.map((pokemon, index) => (
+              <Cards key={index} pokemon={pokemon} />
+            ))
+          )}
       </StelydCard>
     </Container>
   );
