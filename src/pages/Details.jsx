@@ -23,7 +23,7 @@ const URLBase = "https://pokeapi.co/api/v2/pokemon/";
 const Details = () => {
   const [pokemonDet, setPokemonDet] = useState([]);
 
-  const { cardPokemon, setTemPokedex, setNamePokemx } =
+  const { cardPokemon, addPokedex, removePokedex } =
     useContext(FunctionsContext);
 
   const { name } = useParams();
@@ -35,14 +35,10 @@ const Details = () => {
     setPokemonDet([data]);
   };
 
-  // useEffect(() => {
-  //   const URL = `${URLBase}${name}/`;
-  //   getPokemons(URL);
-  // }, []);
-
-  const includesPokedex = (namePoke) => {
-    let test = "fazer a funcao aqui";
-  };
+  useEffect(() => {
+    const URL = `${URLBase}${name}/`;
+    getPokemons(URL);
+  }, []);
 
   return (
     <Container>
@@ -60,46 +56,50 @@ const Details = () => {
             <p>#{pokemon.id}</p>
             <h2>{pokemon.name}</h2>
             <DivSpans>
-            {pokemon.types.map((typeA) => (
-              <>
-                <Icons back={typeA.type.name}>
-                  <img
-                    src={
-                      typeA.type.name === "bug"
-                        ? BugSvg
-                        : typeA.type.name === "fire"
-                        ? Fire
-                        : typeA.type.name === "rock"
-                        ? Rock
-                        : typeA.type.name === "normal"
-                        ? Normal
-                        : typeA.type.name === "grass"
-                        ? Grass
-                        : typeA.type.name === "dragon"
-                        ? Dragon
-                        : typeA.type.name === "ice"
-                        ? Ice
-                        : typeA.type.name === "psychic"
-                        ? Psch
-                        : typeA.type.name === "electric"
-                        ? Eletr
-                        : typeA.type.name === "flying"
-                        ? Flying
-                        : Water
-                    }
-                    alt="icon"
-                  />
-                </Icons>
-                <Span back={typeA.type.name}>
-                  {typeA.type.name}
-                </Span>
-              </>
-            ))}
-
+              {pokemon.types.map((typeA) => (
+                <>
+                  <Icons back={typeA.type.name}>
+                    <img
+                      src={
+                        typeA.type.name === "bug"
+                          ? BugSvg
+                          : typeA.type.name === "fire"
+                          ? Fire
+                          : typeA.type.name === "rock"
+                          ? Rock
+                          : typeA.type.name === "normal"
+                          ? Normal
+                          : typeA.type.name === "grass"
+                          ? Grass
+                          : typeA.type.name === "dragon"
+                          ? Dragon
+                          : typeA.type.name === "ice"
+                          ? Ice
+                          : typeA.type.name === "psychic"
+                          ? Psch
+                          : typeA.type.name === "electric"
+                          ? Eletr
+                          : typeA.type.name === "flying"
+                          ? Flying
+                          : Water
+                      }
+                      alt="icon"
+                    />
+                  </Icons>
+                  <Span back={typeA.type.name}>{typeA.type.name}</Span>
+                </>
+              ))}
             </DivSpans>
             <Text></Text>
           </DetailsPrinc>
           <ImgsPrinc></ImgsPrinc>
+          <div>
+            {cardPokemon.find((nameP) => nameP.name === pokemon.name) ? (
+              <BtnEx onClick={() => removePokedex(pokemon)}>Excluir</BtnEx>
+            ) : (
+              <BtnAdd onClick={() => addPokedex(pokemon)}>Capturar!</BtnAdd>
+            )}
+          </div>
         </Card>
       ))}
     </Container>
@@ -172,11 +172,21 @@ const Text = styled.div`
   background-color: #fff;
 `;
 
-const Icons = styled.div``
+const Icons = styled.div``;
 
 const ImgsPrinc = styled.div`
   width: 240px;
   background-color: blue;
+`;
+
+const BtnAdd = styled.button`
+  color: white;
+  background-color: green;
+`;
+
+const BtnEx = styled.button`
+  color: white;
+  background-color: red;
 `;
 
 export default Details;

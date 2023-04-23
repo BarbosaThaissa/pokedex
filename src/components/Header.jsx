@@ -1,13 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import Logo from "../assets/pngwing.com.png";
-import Seta from "../assets/setaH.svg"
-import { FunctionsContext } from "../context/FunctionsContext";
+import Seta from "../assets/setaH.svg";
 
 const Header = () => {
-  const { addPokedex, removePokedex, temPokedex, namePokem } =
-    useContext(FunctionsContext);
-
   return (
     <Container>
       <A
@@ -18,35 +14,16 @@ const Header = () => {
         &#60; Todos os Pokémons
       </A>
       <img src={Logo} alt="logo" />
-      {window.location.pathname === "/" ? (
-        <a href="/pokedex">
-          <Button
-            className={
-              window.location.pathname === "/pokedex" ? "display-header" : ""
-            }
-          >
-            Pokedéx
-          </Button>
-        </a>
-      ) : temPokedex ? (
-        <ButtonEx
-          onClick={() => removePokedex(namePokem)}
+
+      <a href="/pokedex">
+        <Button
           className={
             window.location.pathname === "/pokedex" ? "display-header" : ""
           }
         >
-          Excluir
-        </ButtonEx>
-      ) : (
-        <ButtonAdd
-          onClick={() => addPokedex(namePokem)}
-          className={
-            window.location.pathname === "/pokedex" ? "display-header" : ""
-          }
-        >
-          Capturar!
-        </ButtonAdd>
-      )}
+          Pokedéx
+        </Button>
+      </a>
     </Container>
   );
 };
