@@ -46,15 +46,32 @@ const Details = () => {
       {pokemonDet.map((pokemon) => (
         <Card key={pokemon.id} back={pokemon.name}>
           <ImgsSecon>
-            <div></div>
-            <div></div>
+            <div>
+              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+            </div>
+            <div>
+              <img src={pokemon.sprites.back_default} alt={pokemon.name} />
+            </div>
           </ImgsSecon>
           <Status>
-            <div></div>
+            <div>
+              <span>Base Stats</span>
+              <ContainerStatus>
+                <Nome>HP</Nome>
+                <Numb>45</Numb>
+                <Porcentagem>
+                  <div>.</div>
+                </Porcentagem>
+              </ContainerStatus>
+              <Total>
+                <Nome>Total</Nome>
+                <Numb>300</Numb>
+              </Total>
+            </div>
           </Status>
           <DetailsPrinc>
             <p>#{pokemon.id}</p>
-            <h2>{pokemon.name}</h2>
+            <h1>{pokemon.name}</h1>
             <DivSpans>
               {pokemon.types.map((typeA) => (
                 <>
@@ -90,16 +107,28 @@ const Details = () => {
                 </>
               ))}
             </DivSpans>
-            <Text></Text>
+            <Text>
+              <Title>Moves:</Title>
+              {pokemon.moves.slice(0, 4).map((moveI) => (
+                <SubTitle key={moveI.move.name}>
+                  {moveI.move.name.replace("-", " ")}
+                </SubTitle>
+              ))}
+            </Text>
           </DetailsPrinc>
-          <ImgsPrinc></ImgsPrinc>
-          <div>
+          <ImgsPrinc>
+            <img
+              src={pokemon.sprites.other.dream_world.front_default}
+              alt="phto pokemon"
+            />
+          </ImgsPrinc>
+          <Buttons>
             {cardPokemon.find((nameP) => nameP.name === pokemon.name) ? (
               <BtnEx onClick={() => removePokedex(pokemon)}>Excluir</BtnEx>
             ) : (
               <BtnAdd onClick={() => addPokedex(pokemon)}>Capturar!</BtnAdd>
             )}
-          </div>
+          </Buttons>
         </Card>
       ))}
     </Container>
@@ -132,11 +161,16 @@ const Container = styled.main`
 `;
 
 const Card = styled.div`
+  margin-top: 2.5rem;
+  background: url(${Pokeball});
   background-color: #729f92;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-position-x: 630px;
   padding: 1rem 1.5rem;
-  border-radius: 10px;
+  border-radius: 37px;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
 `;
 
 const ImgsSecon = styled.div`
@@ -147,46 +181,244 @@ const ImgsSecon = styled.div`
 
   & > div {
     background-color: #fff;
-    width: 282px;
-    height: 282px;
+    width: 280px;
+    height: 280px;
     border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > img {
+      width: 80%;
+    }
   }
 `;
+
 const Status = styled.div`
   border-radius: 8px;
   background-color: #fff;
   width: 343px;
   height: 600px;
+  color: black;
+  padding: 1rem;
+
+  & > div {
+    & > span {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 29px;
+    }
+  }
 `;
+
+const ContainerStatus = styled.div`
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+`;
+
+const Porcentagem = styled.div`
+  width: 100%;
+  color: transparent;
+  display: flex;
+  align-items: center;
+
+  & > div {
+    width: 45%;
+    height: 50%;
+    background-color: #fb8500;
+    border-radius: 8px;
+  }
+`;
+
+const Nome = styled.span`
+  color: rgba(0, 0, 0, 0.5);
+  min-width: 60px;
+  text-align: end;
+`;
+
+const Numb = styled.span`
+  font-weight: 500;
+`;
+
+const Total = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
 const DetailsPrinc = styled.div`
   width: 290px;
   height: 600px;
-  background-color: pink;
+  display: flex;
+  flex-direction: column;
+
+  & > h1::first-letter {
+    text-transform: uppercase;
+  }
+
+  & > p {
+    font-size: 14px;
+    margin-bottom: -5px;
+  }
 `;
 
-const DivSpans = styled.div``;
-
-const Span = styled.div``;
+const DivSpans = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 1.5rem;
+  height: 20%;
+`;
 
 const Text = styled.div`
+  color: black;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 80%;
+
+  span {
+    text-transform: capitalize;
+  }
 `;
 
-const Icons = styled.div``;
+const Title = styled.span`
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+`;
+
+const SubTitle = styled.span`
+  margin-top: 1rem;
+  background-color: #ececec;
+  border-radius: 12px;
+  border: 1px dashed rgba(0, 0, 0, 0.14);
+  width: fit-content;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 17px;
+`;
+
+const Icons = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  background-color: ${({ back }) =>
+    back === "bug"
+      ? "#316520"
+      : back === "fire"
+      ? "#F44900"
+      : back === "rock"
+      ? "#C8B686"
+      : back === "normal"
+      ? "#8A8A8A"
+      : back === "water"
+      ? "#33A4F5"
+      : back === "ice"
+      ? "#74CEC0"
+      : back === "dragon"
+      ? "#0A6CBF"
+      : back === "psychic"
+      ? "#F67176"
+      : back === "electric"
+      ? "#F4D23B"
+      : back === "flying"
+      ? "#6290c3"
+      : "#70B873"};
+  border-top: 1px dashed white;
+  border-left: 1px dashed white;
+  border-bottom: 1px dashed white;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+
+  & > img {
+    height: 15px;
+  }
+`;
+
+const Span = styled.div`
+  background-color: ${({ back }) =>
+    back === "bug"
+      ? "#316520"
+      : back === "fire"
+      ? "#F44900"
+      : back === "rock"
+      ? "#C8B686"
+      : back === "normal"
+      ? "#8A8A8A"
+      : back === "water"
+      ? "#33A4F5"
+      : back === "ice"
+      ? "#74CEC0"
+      : back === "dragon"
+      ? "#0A6CBF"
+      : back === "psychic"
+      ? "#F67176"
+      : back === "electric"
+      ? "#F4D23B"
+      : back === "flying"
+      ? "#6290c3"
+      : "#70B873"};
+  //border-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 3px 7px;
+  border-top: 1px dashed white;
+  border-right: 1px dashed white;
+  border-bottom: 1px dashed white;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  margin-right: 8px;
+`;
 
 const ImgsPrinc = styled.div`
-  width: 240px;
-  background-color: blue;
+  width: 260px;
+  height: 230px;
+  position: absolute;
+  left: 950px;
+  top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Buttons = styled.div`
+  position: relative;
+  top: 530px;
+  right: -35px;
+  height: fit-content;
 `;
 
 const BtnAdd = styled.button`
   color: white;
-  background-color: green;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  background-color: #38b000;
+  font-size: 17px;
+  transition: all 0.3;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #6a994e;
+  }
 `;
 
-const BtnEx = styled.button`
-  color: white;
-  background-color: red;
+const BtnEx = styled(BtnAdd)`
+  background-color: #f94144;
+  padding: 1rem 2.5rem;
+
+  &:hover {
+    background-color: #df2935;
+    cursor: pointer;
+  }
 `;
 
 export default Details;
