@@ -40,6 +40,8 @@ const Details = () => {
     getPokemons(URL);
   }, []);
 
+  let result = 0;
+
   return (
     <Container>
       <h1>Detalhes</h1>
@@ -56,16 +58,32 @@ const Details = () => {
           <Status>
             <div>
               <span>Base Stats</span>
-              <ContainerStatus>
-                <Nome>HP</Nome>
-                <Numb>45</Numb>
-                <Porcentagem>
-                  <div>.</div>
-                </Porcentagem>
-              </ContainerStatus>
+              <div>
+                {pokemon.stats.map((item) => (
+                  <ContainerStatus key={item.stat.name}>
+                    <Nome>
+                      {item.stat.name === "special-defense"
+                        ? "Sp. Def"
+                        : item.stat.name === "special-attack"
+                        ? "Sp. Atk"
+                        : item.stat.name}
+                    </Nome>
+                    <Numb>{item.base_stat}</Numb>
+                    <Porcentagem porc={item.base_stat}>
+                      <div>.</div>
+                    </Porcentagem>
+                  </ContainerStatus>
+                ))}
+              </div>
+
               <Total>
                 <Nome>Total</Nome>
-                <Numb>300</Numb>
+                <Numb>
+                  {pokemon.stats.map((num) => {
+                    result += Number(num.base_stat);
+                  })}
+                  {result}
+                </Numb>
               </Total>
             </div>
           </Status>
@@ -116,11 +134,11 @@ const Details = () => {
               ))}
             </Text>
           </DetailsPrinc>
-          <ImgsPrinc>
-            <img
+          <ImgsPrinc imgBac={pokemon.sprites.other.dream_world.front_default}>
+            {/* <img
               src={pokemon.sprites.other.dream_world.front_default}
               alt="phto pokemon"
-            />
+            /> */}
           </ImgsPrinc>
           <Buttons>
             {cardPokemon.find((nameP) => nameP.name === pokemon.name) ? (
@@ -148,6 +166,7 @@ const Container = styled.main`
   background-repeat: no-repeat;
   background-position: center;
   background-position-y: -63px;
+  //overflow-x: hidden;
 
   & > h1 {
     font-size: 2.5rem;
@@ -163,7 +182,36 @@ const Container = styled.main`
 const Card = styled.div`
   margin-top: 2.5rem;
   background: url(${Pokeball});
-  background-color: #729f92;
+  background-color: ${({ back }) =>
+    back === "pinsir"
+      ? "#76A866"
+      : back === "magmar" || back === "flareon" || back === "moltres"
+      ? "#EAAB7D"
+      : back === "aerodactyl" ||
+        back === "kabutops" ||
+        back === "omanyte" ||
+        back === "omastar" ||
+        back === "kabuto"
+      ? "#d4a373"
+      : back === "ditto" ||
+        back === "tauros" ||
+        back === "eevee" ||
+        back === "porygon" ||
+        back === "snorlax"
+      ? "#BF9762"
+      : back === "vaporeon" ||
+        back === "lapras" ||
+        back === "gyarados" ||
+        back === "magikarp" ||
+        back === "articuno"
+      ? "#71C3FF"
+      : back === "dragonite" || back === "dragonair" || back === "dratini"
+      ? "#004170"
+      : back === "mew" || back === "mewtwo"
+      ? "#ea9ab2"
+      : back === "jolteon" || back === "zapdos"
+      ? "#eec170"
+      : "#729F92"};
   background-repeat: no-repeat;
   background-position: right;
   background-position-x: 630px;
@@ -171,6 +219,10 @@ const Card = styled.div`
   border-radius: 37px;
   display: flex;
   gap: 1.5rem;
+
+  @media (max-width: 1200px) {
+    flex-wrap: wrap;
+  }
 `;
 
 const ImgsSecon = styled.div`
@@ -192,6 +244,22 @@ const ImgsSecon = styled.div`
     & > img {
       width: 80%;
     }
+
+    @media (max-width: 752px) {
+      width: 140px;
+      height: 140px;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    flex-direction: row;
+    gap: 7rem;
+    height: auto;
+    margin-top: 10rem;
+  }
+
+  @media (max-width: 752px) {
+    gap: 1rem;
   }
 `;
 
@@ -204,11 +272,18 @@ const Status = styled.div`
   padding: 1rem;
 
   & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     & > span {
       font-weight: bold;
       font-size: 24px;
       line-height: 29px;
     }
+  }
+
+  @media (max-width: 1000px) {
+    height: auto;
   }
 `;
 
@@ -216,8 +291,11 @@ const ContainerStatus = styled.div`
   display: flex;
   gap: 1rem;
   width: 100%;
-  margin-top: 1rem;
+  justify-content: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
   border-top: 1px solid rgba(0, 0, 0, 0.14);
+  text-transform: capitalize;
 `;
 
 const Porcentagem = styled.div`
@@ -227,7 +305,7 @@ const Porcentagem = styled.div`
   align-items: center;
 
   & > div {
-    width: 45%;
+    width: ${({ porc }) => `${porc}%`};
     height: 50%;
     background-color: #fb8500;
     border-radius: 8px;
@@ -247,6 +325,11 @@ const Numb = styled.span`
 const Total = styled.div`
   display: flex;
   gap: 1rem;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+  margin-top: -1rem;
 `;
 
 const DetailsPrinc = styled.div`
@@ -379,14 +462,30 @@ const Span = styled.div`
 `;
 
 const ImgsPrinc = styled.div`
-  width: 260px;
-  height: 230px;
+  width: 250px;
+  height: 250px;
   position: absolute;
   left: 950px;
   top: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: url(${({ imgBac }) => imgBac})});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  @media (max-width: 1000px) {
+    position: relative;
+    top: -1200px;
+    left: 420px;
+  }
+
+  @media (max-width: 752px) {
+    left: 200px;
+    top: -1400px;
+    width: 140px;
+  }
 `;
 
 const Buttons = styled.div`
@@ -394,6 +493,17 @@ const Buttons = styled.div`
   top: 530px;
   right: -35px;
   height: fit-content;
+
+  @media (max-width: 1000px) {
+    position: relative;
+    top: -1073px;
+    left: -270px;
+  }
+
+  @media (max-width: 752px) {
+      left: 0;
+      top: -1500px;
+  }
 `;
 
 const BtnAdd = styled.button`
