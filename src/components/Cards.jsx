@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { FunctionsContext } from "../context/FunctionsContext";
+import { Link } from "react-router-dom";
 
 //imgs
 import Pokeball from "../assets/pokeball.svg";
@@ -92,7 +93,7 @@ const Cards = (props) => {
             </CardImg>
           </Wrap>
           <Buttons>
-            <a href={`/detail/${pokemonD.name}`}>Detales</a>
+            <Link to={`/detail/${pokemonD.name}`}>Detales</Link>
             {cardPokemon.find((nameP) => nameP.name === pokemonD.name) ? (
               <BtnEx onClick={() => removePokedex(pokemonD)}>Excluir</BtnEx>
             ) : (

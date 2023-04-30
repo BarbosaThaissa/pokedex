@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import Logo from "../assets/pngwing.com.png";
-import Seta from "../assets/setaH.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <Container>
       <A
-        href="/"
+        to="/"
         className={window.location.pathname === "/" ? "display-header" : ""}
       >
         {" "}
@@ -15,7 +15,7 @@ const Header = () => {
       </A>
       <img src={Logo} alt="logo" />
 
-      <a href="/pokedex">
+      <Link to="/pokedex">
         <Button
           className={
             window.location.pathname === "/pokedex" ? "display-header" : ""
@@ -23,7 +23,7 @@ const Header = () => {
         >
           Pokedéx
         </Button>
-      </a>
+      </Link>
     </Container>
   );
 };
@@ -54,7 +54,7 @@ const Container = styled.header`
   }
 `;
 
-const A = styled.a`
+const A = styled(Link)`
   font-weight: bold;
   font-size: 1.3rem;
   color: black;
