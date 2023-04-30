@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import MyRoutes from "./components/MyRoutes";
+import MyRoutes from "./router/MyRoutes";
 import { FunctionsContext } from "./context/FunctionsContext";
 
 const App = () => {
