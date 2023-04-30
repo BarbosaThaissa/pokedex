@@ -40,7 +40,7 @@
 
 ## 🚀 Application Deploy
 
-> Live Preview: LINK AQUI
+> Live Preview: https://pokedexlbn.vercel.app/
 
 <img alt="" src="./src/assets/rainbow-readme.png" />
 
