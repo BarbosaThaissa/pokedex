@@ -15,7 +15,7 @@ const Header = () => {
       </A>
       <img src={Logo} alt="logo" />
 
-      <a href="/pokedex">
+      <Link to="/pokedex">
         <Button
           className={
             window.location.pathname === "/pokedex" ? "display-header" : ""
@@ -23,7 +23,7 @@ const Header = () => {
         >
           Pokedéx
         </Button>
-      </a>
+      </Link>
     </Container>
   );
 };
