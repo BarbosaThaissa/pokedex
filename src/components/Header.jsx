@@ -97,26 +97,4 @@ const Button = styled.button`
   }
 `;
 
-const ButtonEx = styled(Button)`
-  background-color: #f94144;
-  padding: 1rem 3rem;
-
-  &:hover {
-    background-color: #df2935;
-  }
-
-  @media (max-width: 850px) {
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
-  }
-`;
-
-const ButtonAdd = styled(ButtonEx)`
-  background-color: #70e000;
-
-  &:hover {
-    background-color: #a7c957;
-  }
-`;
-
 export default Header;
