@@ -6,10 +6,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <Container>
-      <A
-        to="/"
-        className={window.location.pathname === "/" ? "display-header" : ""}
-      >
+      <A to="/" className={location.pathname === "/" ? "display-header" : ""}>
         {" "}
         &#60; Todos os Pokémons
       </A>
@@ -17,9 +14,7 @@ const Header = () => {
 
       <Link to="/pokedex">
         <Button
-          className={
-            window.location.pathname === "/pokedex" ? "display-header" : ""
-          }
+          className={location.pathname === "/pokedex" ? "display-header" : ""}
         >
           Pokedéx
         </Button>
