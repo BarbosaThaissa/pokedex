@@ -1,67 +1,136 @@
-# **Projeto React e API's**
+<h1 align="center">Pokédex</h1>
 
-O Projeto React e APIs é um site de pokémons que possui três páginas: Home, Pokedex e Detalhes. O projeto está subdivido em temas de acordo com os conteúdos que estudado durante o Módulo 2 - Frontend.
+> Project Status: completed :heavy_check_mark:
 
-Este projeto terá como fonte de dados para a sua criação a [Poke Api](https://pokeapi.co/ "Poke Api"), uma Api pública, muito usada para aplicações focadas em aprendizado de programação e também usada em cases de processos seletivos.
+<img alt="" src="./src/assests/rainbow-readme.png" />
 
-Os conteúdos principais a serem estudados são:
+## Topics
 
-- Integração de APIs
-- React Router
-- Design Systems
-- Estado Global
+:small_blue_diamond: [Layout](#-layout)
 
-## **Enunciado**
+:small_blue_diamond: [Application Deploy](#-application-deploy)
 
-É objetivo deste projeto criar um site com três páginas usando a Poke Api com as seguintes ferramentas:
+:small_blue_diamond: [Project Description](#-project-description)
 
-- React
-- React Router
-- Styled-components
-- React Context
-- Axios
+:small_blue_diamond: [Functionalities](#-functionalities)
 
-### **Requisitos**
+:small_blue_diamond: [Technologies](#-technologies)
 
-- **Gerais:**
-  - [ x] O site deve ter 3 páginas: Home, Pokedex e Detalhes;
-  - [ x] Projeto deve seguir o [design](https://www.figma.com/file/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?t=AEi3zEmWmarf1FbP-0 "design") proposto;
-  - [x ] O fluxo de trocas de páginas devem ser semelhante ao [fluxograma](https://www.figma.com/proto/KseyA2Ofghiek2Cy3ZaDre/Poked%C3%A9x?page-id=0%3A1&node-id=2%3A2&viewport=358%2C197%2C0.27&scaling=scale-down&starting-point-node-id=2%3A2 "fluxograma");
-- **Página Home:**
-  - [x ] Mostrar uma lista de Pokemons, contendo ao menos 20 Pokemons;
-  - [ x] Cada Pokemon será representado por um Card;
-  - [ x] Em cada card de Pokemon tem um botão para adicioná-lo à Pokedex e um outro botão para acessar os detalhes do Pokemon;
-  - [ x] Header dessa página terá um botão para acessar a página da Pokedex
-- **Página Pokédex**
-  - [ x] Renderizar a lista de pokémons adicionados na pokedex;
-  - [ x] Em cada card de Pokemon deve ter um botão para removê-lo da Pokedex e um outro botão para acessar os detalhes do Pokemon.
-  - [ x] Header deve ter um botão para voltar para a Home
-  - [ x] Não deve ser possível adicionar o mesmo Pokemon duas vezes na Pokedex
-- **Página de Detalhes**
-  - [ x] Mostrar os detalhes do Pokemon selecionado, com informações descritas
-  - [ +/-] Header deve ter um botão para adicionar ou remover da Pokedex e outro para voltar a página home.
-- [ x] [Criar um readme](https://www.youtube.com/watch?v=1QKwP0SJK-c "Crie um readme") para o projeto;
+:small_blue_diamond: [Prerequisites](#warning-prerequisites)
 
-### Instruções para preparar o seu repositório
+:small_blue_diamond: [How to run the application](#how-to-run-the-application-arrow_forward)
 
-- Faça o fork desse repositório e realize o clone da sua cópia `seu-nome-de-usuario/projeto-lista-intro-javascript`.
-   <details>
-   <summary>Quer uma dica?</summary>
-   <img src="https://firebasestorage.googleapis.com/v0/b/assets-conteudo.appspot.com/o/gerais%2Ffork.png?alt=media&token=7030e997-246a-41fe-a75f-2a2ced61e54d" alt="Como adicionar o projeto no repositório"/>
-   </details>
-- Crie os arquivos do projeto dentro deste repo;
-- **Lembre-se de abrir os PRs para seu próprio repositório.**
-- Para isso, você precisará fazer o projeto utilizando **branches**. Não faça as alterações direto na branch `main`!
+:small_blue_diamond: [Developers](#developers-octocat)
 
-### Instruções de entrega
+:small_blue_diamond: [License](#memo-license)
 
-![image](https://user-images.githubusercontent.com/71137294/227538428-52271ed2-df78-4500-b286-25f03aa7bf2e.png)
+<img alt="" src="./src/assets/rainbow-readme.png" />
 
-1.  [Crie o surge](https://labenu.notion.site/Deploy-de-front-React-com-Surge-f902a03ec1d247dc9af9aee5a1469d96) do seu projeto e pegue o link da publicação(deploy);
-2.  Adicione o link do surge no readme do seu projeto;
-3.  Tire print das páginas do seu projeto e cole no readme;
-4.  Abra um novo Pull Request (PR) com a frase **PR para correção**. Caso não saiba como fazê-lo, assista a esse [vídeo](https://www.canva.com/design/DAFY4nS5W2c/t92uFMR61YtmA7bCwj2S1Q/watch).
-5.  Envie o link do seu PR e do surge no [formulário de entrega](https://docs.google.com/forms/d/e/1FAIpQLSfGGRaglpzWpdREBBfq3eUCMXkRXuiS61Zfyy0L_Ce0uNIXTA/viewform).
+## 🎨 Layout
+
+<p aling="center">
+ <img alt="photo project" src="./src/assets/fotodahome.png" width="100%">
+ <img alt="photo project" src="./src/assets/fotodedetalhes.png" width="100%">
+ <img alt="photo project" src="./src/assets/mobiledetalhes.png" width="100%">
+ <img alt="photo project" src="./src/assets/fotodapokedex.png " width="100%">
+ <img alt="photo project" src="./src/assets/mobilehome.png" width="100%">
+</p>
+
+<img alt="" src="./src/assests/rainbow-readme.png" />
+
+## 🚀 Application Deploy
+
+> Live Preview: LINK AQUI
+
+<img alt="" src="./src/assets/rainbow-readme.png" />
+
+## 💻 Project Description
+
+<p align="justify">
+
+**<h3>Pokédex:</h3>**
+
+ - É uma aplicação web que tem como objetivo capturar ou remover os pokemons da sua pokédex.
+
+ - A aplicação é totalmente responsiva para todas as telas. 
+ 
+ - Está aplicação tem 3 páginas, Home, Details e Pokédex.
+
+ - Ela foi desenvolvida usando as seguintes tecnologias: JavaScrips, React, React Router Dom, Poke API, Styled-Components and Vercel.
+   
+</p>
+
+<img alt="" src="./src/assets/rainbow-readme.png" />
+
+## 🎓 Functionalities
+
+*<h3>This application has:</h3>*
+
+ - **Page Home:**
+
+     :heavy_check_mark: Mostra uma lista de Pokemons;
+
+     :heavy_check_mark: Em cada card de Pokemon tem um botão para adicioná-lo à Pokedex e um outro botão para acessar os detalhes do Pokemon;
+
+ - **Page Details:**
+
+      :heavy_check_mark: Renderizar a lista de pokémons adicionados na pokedex;
+
+- **Page Pokédex:**
+
+     :heavy_check_mark: Mostrar os detalhes do Pokemon selecionado, com informações descritas
 
 
-Tá com bug será?
+<img alt="" src="./src/assets/rainbow-readme.png" />
+
+## 🧰 Technologies
+
+*This project was developed with the following technologies:*
+
+- [React.JS](https://pt-br.reactjs.org/)
+- [Poke API](https://pokeapi.co/)
+- [Styled Components](https://styled-components.com/)
+- [JavaScript](https://www.javascript.com/)
+- [React Router Dom](https://reactrouter.com/en/main)
+- [Vercel](https://vercel.com/)
+- [Node.JS](https://nodejs.org/)
+- [Git and Github](https://git-scm.com/)
+
+
+<img alt="" src="./src/assets/rainbow-readme.png" />
+
+## How to run the application :arrow_forward:
+
+*In the terminal, clone the project:*
+
+```
+git clone https://github.com/BarbosaThaissa/pokedex
+npm install
+npm run dev
+```
+
+<img alt="" src="./src/assets/rainbow-readme.png" />
+
+## Developers :octocat:
+
+<br>
+
+| [<img src="https://avatars.githubusercontent.com/u/95388382?v=4" width=115><br><sub>Thaíssa Barbosa</sub>](https://github.com/BarbosaThaissa) | | :---: | :---: | :---:
+
+<img alt="" src="./src/assets/rainbow-readme.png" />
+
+## :memo: License
+
+*This project is under the MIT license*
+
+<p aling="center">
+ <img alt="Licence" src="https://img.shields.io/static/v1?label=license&message=MIT&color=AA26&labelColor=000000">
+</p>
+
+<img alt="" src="./src/assests/rainbow-readme.png" />
+
+**Copyright :copyright: 2023 - CineInfo**
+
+<img alt="" src="./src/assets/rainbow-readme.png" />
+
+Made with 💜 by myself : [My contact!](contatothaissabarbosa@gmail.com)
