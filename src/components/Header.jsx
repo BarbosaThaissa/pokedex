@@ -6,19 +6,24 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <Container>
-      <A to="/" className={location.pathname === "/" ? "display-header" : ""}>
+      <A
+        href="/"
+        className={window.location.pathname === "/" ? "display-header" : ""}
+      >
         {" "}
         &#60; Todos os Pokémons
       </A>
       <img src={Logo} alt="logo" />
 
-      <Link to="/pokedex">
+      <a href="/pokedex">
         <Button
-          className={location.pathname === "/pokedex" ? "display-header" : ""}
+          className={
+            window.location.pathname === "/pokedex" ? "display-header" : ""
+          }
         >
           Pokedéx
         </Button>
-      </Link>
+      </a>
     </Container>
   );
 };
@@ -49,7 +54,7 @@ const Container = styled.header`
   }
 `;
 
-const A = styled(Link)`
+const A = styled.a`
   font-weight: bold;
   font-size: 1.3rem;
   color: black;
