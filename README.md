@@ -115,7 +115,8 @@ npm run dev
 
 <br>
 
-| [<img src="https://avatars.githubusercontent.com/u/95388382?v=4" width=115><br><sub>Thaíssa Barbosa</sub>](https://github.com/BarbosaThaissa) | | :---: | :---: | :---:
+| [<img src="https://avatars.githubusercontent.com/u/95388382?v=4" width=115><br><sub>Thaíssa Barbosa</sub>](https://github.com/BarbosaThaissa) | 
+| :---: 
 
 <img alt="" src="./src/assets/rainbow-readme.png" />
 
