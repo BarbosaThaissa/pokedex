@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Redirect } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import MyRoutes from "./router/MyRoutes";
 import { FunctionsContext } from "./context/FunctionsContext";
