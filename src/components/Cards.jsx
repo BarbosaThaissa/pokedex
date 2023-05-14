@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, Fragment } from "react";
 import styled from "styled-components";
 import { FunctionsContext } from "../context/FunctionsContext";
 import { Link } from "react-router-dom";
@@ -49,7 +49,7 @@ const Cards = (props) => {
               <h2>{pokemonD.name}</h2>
               <SpanDiv>
                 {pokemonD.types.map((typeA, index) => (
-                  <>
+                  <Fragment key={typeA.type.name}>
                     <Icon back={typeA.type.name}>
                       <img
                         src={
@@ -81,7 +81,7 @@ const Cards = (props) => {
                     <Span key={index} back={typeA.type.name}>
                       {typeA.type.name}
                     </Span>
-                  </>
+                  </Fragment>
                 ))}
               </SpanDiv>
             </CardText>

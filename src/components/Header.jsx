@@ -1,15 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import Logo from "../assets/pngwing.com.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+
   return (
     <Container>
-      <A
-        href="/"
-        className={window.location.pathname === "/" ? "display-header" : ""}
-      >
+      <A to="/" className={location.pathname === "/" ? "display-header" : ""}>
         {" "}
         &#60; Todos os Pokémons
       </A>
@@ -17,9 +16,7 @@ const Header = () => {
 
       <Link to="/pokedex">
         <Button
-          className={
-            window.location.pathname === "/pokedex" ? "display-header" : ""
-          }
+          className={location.pathname === "/pokedex" ? "display-header" : ""}
         >
           Pokedéx
         </Button>
@@ -54,7 +51,7 @@ const Container = styled.header`
   }
 `;
 
-const A = styled.a`
+const A = styled(Link)`
   font-weight: bold;
   font-size: 1.3rem;
   color: black;
