@@ -3,6 +3,9 @@ import styled from "styled-components";
 import Logo from "../assets/pngwing.com.png";
 import { Link } from "react-router-dom";
 
+
+//consertar a estilização e fazer uma rota corigar
+
 const Header = () => {
   return (
     <Container>
