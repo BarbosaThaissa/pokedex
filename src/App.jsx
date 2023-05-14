@@ -1,5 +1,10 @@
 import React, { useContext } from "react";
-import { BrowserRouter as Router, Route, Routes, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import MyRoutes from "./router/MyRoutes";
 import { FunctionsContext } from "./context/FunctionsContext";
@@ -31,6 +36,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/pokedex" element={<PokedexPage />} />
           <Route path="/detail/:name" element={<Details />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <PopUp />
         <Footer />
